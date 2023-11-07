@@ -11,24 +11,7 @@ public class FCFS {
 	}
 	  public  float[][] fcfs()
 	  {
-	     /* Scanner sc = new Scanner(System.in);
-	      // Input
-	      System.out.println("enter no of processes:");
-	      int n = sc.nextInt();
-	      float[][] input_table = new float[200][200];
-	     
-	      System.out.println("Enter the details of the processes:");
-	      for(int i=1;i<=n;i++)
-	      {
-	        input_table[i][1] = i;
-	        System.out.println("Enter burst time of process " + i + ":");
-	         float f= sc.nextFloat();
-	         input_table[i][2] = f;
-	        System.out.println("Enter arrival time of process " + i + ":");
-	         float g = sc.nextFloat();
-	        input_table[i][3] = g;
-	        
-	      }*/
+	  
 	       sort(input_table,n);
 	      float[][] ga = gantt(input_table,n);
 	      // sorts according to arrival time

@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
 
 public class Main extends Application {
@@ -89,10 +92,32 @@ public class Main extends Application {
 				        	root.add(TAT[processIndex], 1, 3*no_of_processes+2+2*processIndex+1);
 				        	 
 				        }
+				        Canvas ganttChartCanvas = new Canvas(500, 100);
+				        GraphicsContext gc = ganttChartCanvas.getGraphicsContext2D();
+				        int x = 0,y=0; // Initialize the x-coordinate
+				        for (int i = 1; i <= no_of_processes; i++) {
+				            // Draw a rectangle for each process
+				           //gc.setFill(Color.BLUE); // You can set the color as needed
+				            //gc.fillRect(x, 20, 20, 40); // Adjust the Y and height values as needed
+				           gc.setFill(Color.BLACK);
+				          gc.strokeRect(x, 0, 40, 40);
+				          gc.strokeText("P"+i,x+10,20);
+				          gc.strokeText(""+y, x, 60);
+				          x += 40;
+				          y += input_table[i][2];
+
+				            // Update the x-coordinate for the next process
+				           // x += input_table[i][2];
+				        }
+				        gc.strokeText(""+y, x, 60);
+
+				  
 				        root.add(new Label("AVerage Waiting time"),0, 5*no_of_processes+4);
 				        root.add(new Label(""+avg_WT/(float)no_of_processes), 1, 5*no_of_processes+4);
 				        root.add(new Label("AVerage Turn Around time"),0, 5*no_of_processes+4+1);
 				        root.add(new Label(""+avg_TAT/(float)no_of_processes), 1, 5*no_of_processes+4+1);
+				       // root.add(ganttChartCanvas, 0, 5*no_of_processes+4+4);
+
 		        	}
 		        };
 			  EventHandler<ActionEvent> input_n = new EventHandler<ActionEvent>() {
